@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Mental Health Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background: #f4f6f9;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            font-size: 1.4em;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>🧠 Student Mental Health Prediction</h2>
+
+        <form action="/predict" method="post">
+
+            <label>Sleep Hours:</label>
+            <input type="number" step="any" name="sleep_hours" required>
+
+            <label>Study Hours:</label>
+            <input type="number" step="any" name="study_hours" required>
+
+            <label>Social Media Hours:</label>
+            <input type="number" step="any" name="social_media_hours" required>
+
+            <label>Exercise Minutes:</label>
+            <input type="number" step="any" name="exercise_minutes" required>
+
+            <label>Class Attendance (%):</label>
+            <input type="number" step="any" name="class_attendance_percent" required>
+
+            <label>Deadlines Missed:</label>
+            <input type="number" step="any" name="assignment_deadlines_missed" required>
+
+            <label>Stress Level (1-10):</label>
+            <input type="number" step="any" name="stress_level" required>
+
+            <label>Focus Level (1-10):</label>
+            <input type="number" step="any" name="focus_level" required>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
